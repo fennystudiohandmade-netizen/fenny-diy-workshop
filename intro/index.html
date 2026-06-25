@@ -144,6 +144,19 @@
   .contact-row { display: flex; gap: 1.6cqw; justify-content: center; margin-top: 2.4cqw; flex-wrap: wrap; }
   .contact-pill { background: var(--white-warm); border: 1px solid var(--line); border-radius: 99px;
     padding: 1cqw 2.2cqw; font-size: 1.6cqw; color: var(--ink); text-decoration: none; }
+  /* logo 品牌標誌 + QR code 卡片 */
+  .brand-logo { width: 13cqw; height: 13cqw; object-fit: contain; border-radius: 50%; margin-bottom: 1cqw; }
+  .brand-logo.ph { display: flex; align-items: center; justify-content: center; background: var(--earth-light);
+    color: var(--earth-deep); font-size: 1.2cqw; text-align: center; line-height: 1.3; }
+  .qr-row { display: flex; gap: 3cqw; justify-content: center; margin-top: 1.8cqw; }
+  .qr-card { background: var(--white-warm); border: 1px solid var(--line); border-radius: 1.4cqw; padding: 1.3cqw;
+    display: flex; flex-direction: column; align-items: center; gap: .7cqw; width: 19cqw; }
+  .qr-card .qr-img { width: 14cqw; height: 14cqw; object-fit: contain; display: block; border-radius: .6cqw; background: #fff; }
+  .qr-card .qr-img.ph { display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--earth-soft), var(--earth-light)); color: var(--earth-deep);
+    font-size: 1.1cqw; text-align: center; line-height: 1.3; }
+  .qr-card .qr-name { font-size: 1.5cqw; color: var(--ink); font-weight: 700; }
+  .qr-card .qr-sub { font-size: 1.05cqw; color: var(--ink-muted); }
 
   /* ===== 舞台下方換頁按鈕（固定大小、好點，免程式） ===== */
   .pager { display: flex; gap: 12px; justify-content: center; }
@@ -299,17 +312,16 @@
   <!-- ===== P8 結尾 ===== -->
   <section class="slide" id="s8">
     <div class="stage closing-stage">
-      <div class="final-emoji">🤍</div>
+      <!-- ★替換：品牌 logo（等檔案到了換成 <img class="brand-logo" src="{{LOGO}}" alt="FENNY STUDIO">） -->
+      <div class="brand-logo ph">LOGO<br>待上傳</div>
       <div class="final-title">用雙手，做一件溫暖的事</div>
-      <div class="final-msg">
-        謝謝你看到這裡。想預約課程、訂製作品，或想多認識芬妮手作，都歡迎和我們聯絡 🤍
-      </div>
-      <div class="contact-row">
-        <!-- ★替換：把 # 換成你的連結 -->
-        <a class="contact-pill" href="#">📷 Instagram</a>
-        <a class="contact-pill" href="#">👍 Facebook</a>
-        <a class="contact-pill" href="#">💬 LINE</a>
-        <a class="contact-pill" href="#">🛒 線上商店</a>
+      <div class="final-msg">想預約課程、訂製作品，或想多認識芬妮手作，歡迎掃碼追蹤・聯絡我們 🤍</div>
+      <div class="qr-row">
+        <!-- ★替換：IG QR（待上傳）→ <img class="qr-img" src="{{QR_IG}}" alt="Instagram QR"> -->
+        <div class="qr-card"><div class="qr-img ph">IG QR<br>待上傳</div><span class="qr-name">📷 Instagram</span><span class="qr-sub">@fenny.studio</span></div>
+        <!-- ★替換：LINE QR（待上傳）→ <img class="qr-img" src="{{QR_LINE}}" alt="LINE QR"> -->
+        <div class="qr-card"><div class="qr-img ph">LINE QR<br>待上傳</div><span class="qr-name">💬 LINE</span><span class="qr-sub">加好友</span></div>
+        <div class="qr-card"><img class="qr-img" src="assets/qr-store.png" alt="線上商店 QR"><span class="qr-name">🛒 線上商店</span><span class="qr-sub">flowers.fenny-studio.com</span></div>
       </div>
     </div>
     <nav class="pager"><a class="pg prev" href="#s7">‹ 上一頁</a><a class="pg next" href="#s1">↺ 回到開頭</a></nav>
