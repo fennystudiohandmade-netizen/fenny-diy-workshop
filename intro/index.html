@@ -100,6 +100,14 @@
   .exp-list { list-style: none; margin-top: 2.2cqw; }
   .exp-list li { position: relative; padding-left: 3.2cqw; margin-bottom: 1.7cqw; font-size: 2.2cqw; line-height: 1.5; color: var(--ink-soft); }
   .exp-list li::before { content: "🌸"; position: absolute; left: 0; top: .1cqw; font-size: 1.9cqw; }
+  /* ===== 我的歷程 ===== */
+  .journey { display: flex; gap: 2cqw; margin-top: 1.8cqw; }
+  .jcard { flex: 1; background: var(--white-warm); border: 1px solid var(--line); border-radius: 1.6cqw; padding: 2.2cqw 1.8cqw; }
+  .jcard .jstep { font-size: 1.3cqw; color: var(--earth-deep); font-weight: 700; letter-spacing: .15cqw; margin-bottom: .7cqw; }
+  .jcard .jrole { font-size: 2.3cqw; font-weight: 800; color: var(--ink); margin-bottom: .9cqw; }
+  .jcard .jdesc { font-size: 1.55cqw; line-height: 1.55; color: var(--ink-soft); }
+  .journey-hl { margin-top: 2cqw; background: var(--earth-soft); border-left: .6cqw solid var(--earth-deep);
+    border-radius: 1cqw; padding: 1.6cqw 2cqw; font-size: 2cqw; font-weight: 700; color: var(--earth-deep); line-height: 1.6; }
 
   /* ===== 作品牆 5×3 ===== */
   .gallery-stage { justify-content: flex-start; }
@@ -194,7 +202,7 @@
           <span class="chapter-tag">FENNY STUDIO ・ 毛根手作</span>
           <!-- ★替換：品牌標題 -->
           <h1 class="title">芬妮手作<br>用雙手，做一朵不凋謝的花</h1>
-          <h2 class="subtitle">把溫度，慢慢做進每一個作品裡 🤍</h2>
+          <h2 class="subtitle">一起來看看毛根可以變出什麼魔法吧✨</h2>
           <div class="author">芬妮手作 FENNY STUDIO</div>
         </div>
         <div class="cover-img-wrap">
@@ -239,6 +247,20 @@
         <li>擅長把細膩花型拆解成簡單步驟，零基礎也能完成</li>
         <li>理念：用雙手做一朵不凋謝的花，把溫度帶回家</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ===== P3.5 我的歷程 ===== -->
+  <section class="slide" id="s3b">
+    <div class="stage">
+      <span class="chapter-tag">我的歷程</span>
+      <h1 class="title" style="margin-bottom:.6cqw;">每一段路，都不會白費</h1>
+      <div class="journey">
+        <div class="jcard"><div class="jstep">STEP 1</div><div class="jrole">職能治療師</div><div class="jdesc">把複雜的動作拆解、變簡單 —— 練成「把複雜變簡單」的能力。</div></div>
+        <div class="jcard"><div class="jstep">STEP 2</div><div class="jrole">軟體工程師</div><div class="jdesc">學會寫程式、架網站 —— 多了一項技術工具。</div></div>
+        <div class="jcard"><div class="jstep">STEP 3</div><div class="jrole">毛根手作</div><div class="jdesc">把拆解力 × 技術力，變成教學與作品。</div></div>
+      </div>
+      <div class="journey-hl">每一個你嘗試過的學習，都不會白費 —— 它會在某一天，變成你的工具。</div>
     </div>
   </section>
 
