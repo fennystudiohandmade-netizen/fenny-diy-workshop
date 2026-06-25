@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>芬妮手作 FENNY STUDIO｜品牌介紹</title>
+<style>
+  /* ============================================================
+     芬妮手作 公版通用介紹 — 16:9 簡報版 ・ 質感米色 + 淡粉紅
+     ★ 換頁：左右滑、或舞台下方「上一頁／下一頁」按鈕（免程式）
+     ★ 內容會整體等比例縮放（用 cqw 單位），手機/平板/電腦都是 16:9
+     ★ 替換內容：搜尋「★替換」
+     ============================================================ */
+  :root {
+    --earth:#E6A6B8; --earth-deep:#C56F8C; --earth-soft:#F7E3EA; --earth-light:#FCF2F5;
+    --cream:#FAF5EC; --beige:#F2E9D9; --gold:#E0B7C3;
+    --ink:#4B4045; --ink-soft:#7C7075; --ink-muted:#ABA0A4;
+    --white-warm:#FFFDFB; --line:#ECE0D2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    font-family: "PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+    background: linear-gradient(135deg, #ECDFDC 0%, #DDC8CF 100%);
+    color: var(--ink); overflow: hidden; -webkit-font-smoothing: antialiased;
+  }
+
+  /* 橫向滑動容器（純 CSS 換頁） */
+  .deck { display: flex; width: 100vw; height: 100vh; overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+  .deck::-webkit-scrollbar { display: none; }
+
+  .slide {
+    flex: 0 0 100vw; width: 100vw; height: 100vh;
+    scroll-snap-align: start; scroll-snap-stop: always;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: clamp(10px, 1.8vh, 16px); padding: 1.5vh 1.5vw;
+  }
+
+  /* 16:9 舞台卡片（內容用 cqw 等比縮放） */
+  .stage {
+    container-type: inline-size;
+    position: relative;
+    width: min(96vw, calc((100vh - 86px) * 16 / 9));
+    aspect-ratio: 16 / 9; max-width: 1280px;
+    background: var(--cream); border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(150,100,115,.26);
+    overflow: hidden; display: flex; flex-direction: column; justify-content: center;
+    padding: 5.4cqw 6cqw;
+  }
+  .stage::before { content:""; position:absolute; top:-14cqw; right:-10cqw; width:30cqw; height:30cqw;
+    border-radius:50%; background:radial-gradient(circle, rgba(230,166,184,.22), transparent 70%); z-index:0; }
+  .stage::after { content:""; position:absolute; bottom:-16cqw; left:-12cqw; width:34cqw; height:34cqw;
+    border-radius:50%; background:radial-gradient(circle, rgba(242,233,217,.6), transparent 70%); z-index:0; }
+  .stage > * { position: relative; z-index: 1; }
+
+  .chapter-tag { align-self: flex-start; display: inline-block; padding: .7cqw 1.6cqw; border-radius: 99px;
+    background: var(--earth-soft); color: var(--earth-deep); font-size: 1.5cqw; letter-spacing: .2cqw;
+    font-weight: 600; margin-bottom: 1.8cqw; }
+  h1.title { font-size: 5cqw; line-height: 1.25; font-weight: 800; color: var(--ink); margin-bottom: 1.6cqw; }
+  h2.subtitle { font-size: 2.6cqw; line-height: 1.5; color: var(--ink-soft); font-weight: 500; margin-bottom: 1.6cqw; }
+  .body-text { font-size: 2cqw; line-height: 1.8; color: var(--ink-soft); }
+  .body-text p + p { margin-top: .8cqw; }
+
+  /* 媒體佔位框 */
+  .media-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; background: linear-gradient(135deg, var(--earth-soft), var(--earth-light));
+    color: var(--earth-deep); gap: .6cqw; text-align: center; padding: 1cqw; }
+  .media-ph .ph-ico { font-size: 3cqw; opacity: .6; }
+  .media-ph .ph-txt { font-size: 1.3cqw; opacity: .85; line-height: 1.4; }
+
+  /* ===== 封面 ===== */
+  .cover-stage { background: linear-gradient(135deg, #FBF4EA 0%, #F8DEE7 100%); justify-content: center; }
+  .cover-grid { display: flex; align-items: center; gap: 5cqw; }
+  .cover-text { flex: 1 1 auto; }
+  .cover-text .chapter-tag { background: #fff; box-shadow: 0 .3cqw 1.2cqw rgba(197,111,140,.12); }
+  .cover-text h1 { font-size: 5.6cqw; }
+  .cover .author { margin-top: 2.4cqw; font-size: 1.7cqw; letter-spacing: .4cqw; color: var(--earth-deep); font-weight: 600; }
+  .cover-img-wrap { flex: 0 0 33cqw; width: 33cqw; height: 33cqw; border-radius: 3cqw; overflow: hidden;
+    box-shadow: 0 2cqw 5cqw rgba(197,111,140,.22); }
+  .cover-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transform: scale(1.08); }
+
+  /* ===== 數字 ===== */
+  .stat-row { display: flex; gap: 2.4cqw; margin-top: 2.4cqw; }
+  .stat { flex: 1; background: var(--white-warm); border: 1px solid var(--line); border-radius: 1.6cqw; padding: 2cqw 1.6cqw; text-align: center; }
+  .stat b { display: block; font-size: 4cqw; color: var(--earth-deep); font-weight: 800; }
+  .stat span { font-size: 1.5cqw; color: var(--ink-muted); letter-spacing: .1cqw; }
+
+  /* ===== 講師 ===== */
+  .inst { display: flex; gap: 4.5cqw; align-items: center; }
+  .inst-photo { flex: 0 0 27cqw; width: 27cqw; height: 27cqw; border-radius: 2.6cqw; overflow: hidden;
+    box-shadow: 0 1.8cqw 4cqw rgba(197,111,140,.22); }
+  .inst-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .inst-name { font-size: 4cqw; font-weight: 800; color: var(--ink); }
+  .inst-role { font-size: 1.9cqw; color: var(--earth-deep); font-weight: 700; margin-bottom: 1.2cqw; }
+  .inst-body ul { list-style: none; }
+  .inst-body li { position: relative; padding-left: 2.6cqw; margin-bottom: 1.1cqw; font-size: 1.9cqw; line-height: 1.5; color: var(--ink-soft); }
+  .inst-body li::before { content: "🤍"; position: absolute; left: 0; top: .1cqw; font-size: 1.5cqw; }
+
+  /* ===== 作品牆 5×3 ===== */
+  .gallery-stage { justify-content: flex-start; }
+  .gallery { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(3, 1fr);
+    gap: 1.1cqw; flex: 1; min-height: 0; margin-top: 1.4cqw; }
+  .cell { border-radius: 1.2cqw; overflow: hidden; background: var(--earth-soft); }
+  .cell video, .cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ===== 主打作品 ===== */
+  .feature-stage { justify-content: center; align-items: center; text-align: center; }
+  .media-large { width: 36cqw; aspect-ratio: 1/1; margin-top: 1.8cqw; border-radius: 2cqw; overflow: hidden;
+    box-shadow: 0 1.8cqw 4cqw rgba(197,111,140,.2); }
+  .media-large video, .media-large img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ===== 介紹影片（直式） ===== */
+  .intro-stage { justify-content: flex-start; }
+  .intro-videos { display: flex; justify-content: center; gap: 3cqw; flex: 1; min-height: 0; align-items: center; margin-top: 1.4cqw; }
+  .intro-video { height: 90%; aspect-ratio: 9/16; background: #fff; border: 1px solid var(--line);
+    border-radius: 1.4cqw; overflow: hidden; display: flex; flex-direction: column; }
+  .intro-video video, .intro-video .media-ph { width: 100%; flex: 1; min-height: 0; object-fit: cover; background: #000; }
+  .intro-video-label { text-align: center; padding: .7cqw 0; font-size: 1.4cqw; color: var(--earth-deep); font-weight: 600; background: #fff; }
+
+  /* ===== 流程 ===== */
+  .timeline { display: flex; flex-direction: column; gap: 1.1cqw; margin-top: 1.4cqw; }
+  .tl-row { display: flex; align-items: center; gap: 2cqw; background: var(--white-warm); border-radius: 1.4cqw;
+    padding: 1.3cqw 2cqw; border-left: .6cqw solid var(--earth); }
+  .tl-row:nth-child(even) { border-left-color: var(--gold); }
+  .tl-time { flex: 0 0 8cqw; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: .7cqw 0; background: linear-gradient(135deg, var(--earth), var(--earth-deep)); color: #fff; border-radius: 1cqw; }
+  .tl-time b { font-size: 2.6cqw; line-height: 1; }
+  .tl-time span { font-size: 1cqw; letter-spacing: .1cqw; }
+  .tl-body h3 { font-size: 2cqw; color: var(--ink); margin-bottom: .2cqw; }
+  .tl-body p { font-size: 1.5cqw; line-height: 1.4; color: var(--ink-soft); }
+
+  /* ===== 結尾 ===== */
+  .closing-stage { background: linear-gradient(160deg, var(--earth-soft) 0%, var(--cream) 100%);
+    justify-content: center; align-items: center; text-align: center; }
+  .final-emoji { font-size: 7cqw; margin-bottom: 1.2cqw; }
+  .final-title { font-size: 5cqw; font-weight: 800; color: var(--ink); line-height: 1.3; }
+  .final-msg { font-size: 2.1cqw; line-height: 1.9; color: var(--ink); margin-top: 1.8cqw; max-width: 82%; }
+  .final-msg strong { color: var(--earth-deep); }
+  .contact-row { display: flex; gap: 1.6cqw; justify-content: center; margin-top: 2.4cqw; flex-wrap: wrap; }
+  .contact-pill { background: var(--white-warm); border: 1px solid var(--line); border-radius: 99px;
+    padding: 1cqw 2.2cqw; font-size: 1.6cqw; color: var(--ink); text-decoration: none; }
+
+  /* ===== 舞台下方換頁按鈕（固定大小、好點，免程式） ===== */
+  .pager { display: flex; gap: 12px; justify-content: center; }
+  .pg { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 15px; font-weight: 700;
+    padding: 11px 26px; border-radius: 99px; -webkit-tap-highlight-color: transparent; }
+  .pg.next { background: var(--earth-deep); color: #fff; box-shadow: 0 6px 16px rgba(197,111,140,.35); }
+  .pg.next:active { transform: scale(.97); }
+  .pg.prev { background: #fff; color: var(--earth-deep); border: 1.5px solid var(--earth-soft); }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- ===== P1 封面 ===== -->
+  <section class="slide" id="s1">
+    <div class="stage cover-stage cover">
+      <div class="cover-grid">
+        <div class="cover-text">
+          <span class="chapter-tag">FENNY STUDIO ・ 毛根手作</span>
+          <!-- ★替換：品牌標題 -->
+          <h1 class="title">芬妮手作<br>用雙手，做一朵不凋謝的花</h1>
+          <h2 class="subtitle">把溫度，慢慢做進每一個作品裡 🤍</h2>
+          <div class="author">芬妮手作 FENNY STUDIO</div>
+        </div>
+        <div class="cover-img-wrap">
+          <!-- ★封面主圖：粉紅毛根花 -->
+          <img src="assets/cover.jpeg" alt="芬妮手作 粉紅毛根花">
+        </div>
+      </div>
+    </div>
+    <nav class="pager"><a class="pg next" href="#s2">下一頁 ›</a></nav>
+  </section>
+
+  <!-- ===== P2 關於 ===== -->
+  <section class="slide" id="s2">
+    <div class="stage">
+      <span class="chapter-tag">關於我們</span>
+      <h1 class="title">關於芬妮手作</h1>
+      <div class="body-text">
+        <!-- ★替換：品牌故事 -->
+        <p>芬妮手作是一間以「毛根手作」為主的小小工作室。</p>
+        <p>我們相信，手作不只是完成一個作品，而是把心意與溫度，一針一線地放進去。</p>
+        <p>從零基礎也能上手的課程，到細膩精緻的訂製作品，讓更多人享受動手做的快樂。</p>
+      </div>
+      <div class="stat-row">
+        <!-- ★替換：真實數字 -->
+        <div class="stat"><b>5+</b><span>年手作經驗</span></div>
+        <div class="stat"><b>1000+</b><span>完成作品</span></div>
+        <div class="stat"><b>100%</b><span>純手工製作</span></div>
+      </div>
+    </div>
+    <nav class="pager"><a class="pg prev" href="#s1">‹ 上一頁</a><a class="pg next" href="#s3">下一頁 ›</a></nav>
+  </section>
+
+  <!-- ===== P3 講師 ===== -->
+  <section class="slide" id="s3">
+    <div class="stage">
+      <span class="chapter-tag">講師介紹</span>
+      <div class="inst">
+        <div class="inst-photo">
+          <!-- ★替換：講師照片（換成 <img src="講師.jpg" alt="講師">） -->
+          <div class="media-ph"><div class="ph-ico">👩‍🎨</div><div class="ph-txt">講師照片<br>放這裡</div></div>
+        </div>
+        <div class="inst-body">
+          <!-- ★替換：講師姓名／頭銜／經歷 -->
+          <div class="inst-name">講師姓名</div>
+          <div class="inst-role">Fenny Studio｜毛根手作花藝講師</div>
+          <ul>
+            <li>專注毛根手作花藝設計與教學</li>
+            <li>擅長把細膩花型拆解成簡單步驟，零基礎也能完成</li>
+            <li>帶領企業團體、親子與社群手作活動經驗豐富</li>
+            <li>理念：用雙手做一朵不凋謝的花，把溫度帶回家</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <nav class="pager"><a class="pg prev" href="#s2">‹ 上一頁</a><a class="pg next" href="#s4">下一頁 ›</a></nav>
+  </section>
+
+  <!-- ===== P4 作品牆 5×3 ===== -->
+  <section class="slide" id="s4">
+    <div class="stage gallery-stage">
+      <span class="chapter-tag">作品精選</span>
+      <h1 class="title" style="margin-bottom:.4cqw;">我們的手作作品</h1>
+      <div class="gallery">
+        <!-- ★替換：每格 <video autoplay muted loop playsinline><source src="assets/works/工作.mp4" type="video/mp4"></video> -->
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work01.mp4" type="video/mp4"></video></div>
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work02.mp4" type="video/mp4"></video></div>
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work03.mp4" type="video/mp4"></video></div>
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work04.mp4" type="video/mp4"></video></div>
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work05.mp4" type="video/mp4"></video></div>
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work06.mp4" type="video/mp4"></video></div>
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work07.mp4" type="video/mp4"></video></div>
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work08.mp4" type="video/mp4"></video></div>
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work09.mp4" type="video/mp4"></video></div>
+        <div class="cell"><video autoplay muted loop playsinline preload="metadata"><source src="assets/works/work10.mp4" type="video/mp4"></video></div>
+        <div class="cell"><div class="media-ph"><div class="ph-ico">🎬</div><div class="ph-txt">作品 11</div></div></div>
+        <div class="cell"><div class="media-ph"><div class="ph-ico">🎬</div><div class="ph-txt">作品 12</div></div></div>
+        <div class="cell"><div class="media-ph"><div class="ph-ico">🎬</div><div class="ph-txt">作品 13</div></div></div>
+        <div class="cell"><div class="media-ph"><div class="ph-ico">🎬</div><div class="ph-txt">作品 14</div></div></div>
+        <div class="cell"><div class="media-ph"><div class="ph-ico">🎬</div><div class="ph-txt">作品 15</div></div></div>
+      </div>
+    </div>
+    <nav class="pager"><a class="pg prev" href="#s3">‹ 上一頁</a><a class="pg next" href="#s5">下一頁 ›</a></nav>
+  </section>
+
+  <!-- ===== P5 主打作品 ===== -->
+  <section class="slide" id="s5">
+    <div class="stage feature-stage">
+      <span class="chapter-tag" style="align-self:center;">主打作品</span>
+      <h1 class="title">本月主打 ✨</h1>
+      <div class="media-large">
+        <!-- ★替換：主打大圖／大影片 -->
+        <div class="media-ph"><div class="ph-ico">🎬</div><div class="ph-txt">主打作品<br>放這裡</div></div>
+      </div>
+    </div>
+    <nav class="pager"><a class="pg prev" href="#s4">‹ 上一頁</a><a class="pg next" href="#s6">下一頁 ›</a></nav>
+  </section>
+
+  <!-- ===== P6 介紹影片 ===== -->
+  <section class="slide" id="s6">
+    <div class="stage intro-stage">
+      <span class="chapter-tag">介紹影片</span>
+      <h1 class="title" style="margin-bottom:.4cqw;">看看手作的過程 📹</h1>
+      <div class="intro-videos">
+        <!-- ★替換：每支 <video controls preload="metadata" playsinline><source src="介紹.mp4" type="video/mp4"></video> -->
+        <div class="intro-video"><div class="media-ph"><div class="ph-ico">▶️</div><div class="ph-txt">介紹 ①</div></div><div class="intro-video-label">介紹影片 ①</div></div>
+        <div class="intro-video"><div class="media-ph"><div class="ph-ico">▶️</div><div class="ph-txt">介紹 ②</div></div><div class="intro-video-label">介紹影片 ②</div></div>
+        <div class="intro-video"><div class="media-ph"><div class="ph-ico">▶️</div><div class="ph-txt">介紹 ③</div></div><div class="intro-video-label">介紹影片 ③</div></div>
+      </div>
+    </div>
+    <nav class="pager"><a class="pg prev" href="#s5">‹ 上一頁</a><a class="pg next" href="#s7">下一頁 ›</a></nav>
+  </section>
+
+  <!-- ===== P7 流程 ===== -->
+  <section class="slide" id="s7">
+    <div class="stage">
+      <span class="chapter-tag">課程流程</span>
+      <h1 class="title" style="margin-bottom:.4cqw;">一堂課，這樣進行</h1>
+      <div class="timeline">
+        <!-- ★替換：時間與內容 -->
+        <div class="tl-row"><div class="tl-time"><b>5</b><span>MIN</span></div><div class="tl-body"><h3>開場暖身</h3><p>活動介紹、材料認識與今日成品搶先看。</p></div></div>
+        <div class="tl-row"><div class="tl-time"><b>25</b><span>MIN</span></div><div class="tl-body"><h3>基礎技巧教學</h3><p>示範毛根纏繞與塑形，跟著做完成第一個部分。</p></div></div>
+        <div class="tl-row"><div class="tl-time"><b>30</b><span>MIN</span></div><div class="tl-body"><h3>動手製作</h3><p>運用學到的技巧，獨立完成自己的作品。</p></div></div>
+        <div class="tl-row"><div class="tl-time"><b>15</b><span>MIN</span></div><div class="tl-body"><h3>組裝與收尾</h3><p>細節調整與最後修飾，完成專屬作品。</p></div></div>
+      </div>
+    </div>
+    <nav class="pager"><a class="pg prev" href="#s6">‹ 上一頁</a><a class="pg next" href="#s8">下一頁 ›</a></nav>
+  </section>
+
+  <!-- ===== P8 結尾 ===== -->
+  <section class="slide" id="s8">
+    <div class="stage closing-stage">
+      <div class="final-emoji">🤍</div>
+      <div class="final-title">用雙手，做一件溫暖的事</div>
+      <div class="final-msg">
+        謝謝你看到這裡。想預約課程、訂製作品，或想多認識芬妮手作，都歡迎和我們聯絡 🤍
+      </div>
+      <div class="contact-row">
+        <!-- ★替換：把 # 換成你的連結 -->
+        <a class="contact-pill" href="#">📷 Instagram</a>
+        <a class="contact-pill" href="#">👍 Facebook</a>
+        <a class="contact-pill" href="#">💬 LINE</a>
+        <a class="contact-pill" href="#">🛒 線上商店</a>
+      </div>
+    </div>
+    <nav class="pager"><a class="pg prev" href="#s7">‹ 上一頁</a><a class="pg next" href="#s1">↺ 回到開頭</a></nav>
+  </section>
+
+</div>
+
+<script>
+  // 加分用：只播放目前頁的影片。不執行也能左右滑、點按鈕換頁。
+  const deck = document.getElementById('deck');
+  const slides = [...document.querySelectorAll('.slide')];
+  function currentIndex(){ return Math.round(deck.scrollLeft / window.innerWidth); }
+  function syncVideos(){
+    const idx = currentIndex();
+    slides.forEach((s,i)=>s.querySelectorAll('video').forEach(v=>{
+      if(v.hasAttribute('controls')) return;
+      if(i===idx) v.play().catch(()=>{}); else v.pause();
+    }));
+  }
+  let t; deck.addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(syncVideos,90);},{passive:true});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();deck.scrollBy({left:window.innerWidth,behavior:'smooth'});}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();deck.scrollBy({left:-window.innerWidth,behavior:'smooth'});}
+  });
+  syncVideos();
+</script>
+
+</body>
+</html>
