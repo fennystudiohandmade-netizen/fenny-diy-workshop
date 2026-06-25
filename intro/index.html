@@ -96,6 +96,10 @@
   .inst-body ul { list-style: none; }
   .inst-body li { position: relative; padding-left: 2.6cqw; margin-bottom: 1.1cqw; font-size: 1.9cqw; line-height: 1.5; color: var(--ink-soft); }
   .inst-body li::before { content: "🤍"; position: absolute; left: 0; top: .1cqw; font-size: 1.5cqw; }
+  /* 講師經歷（無照片版） */
+  .exp-list { list-style: none; margin-top: 2.2cqw; }
+  .exp-list li { position: relative; padding-left: 3.2cqw; margin-bottom: 1.7cqw; font-size: 2.2cqw; line-height: 1.5; color: var(--ink-soft); }
+  .exp-list li::before { content: "🌸"; position: absolute; left: 0; top: .1cqw; font-size: 1.9cqw; }
 
   /* ===== 作品牆 5×3 ===== */
   .gallery-stage { justify-content: flex-start; }
@@ -216,23 +220,16 @@
   <section class="slide" id="s3">
     <div class="stage">
       <span class="chapter-tag">講師介紹</span>
-      <div class="inst">
-        <div class="inst-photo">
-          <!-- ★替換：講師照片（換成 <img src="講師.jpg" alt="講師">） -->
-          <div class="media-ph"><div class="ph-ico">👩‍🎨</div><div class="ph-txt">講師照片<br>放這裡</div></div>
-        </div>
-        <div class="inst-body">
-          <!-- ★替換：講師姓名／頭銜／經歷 -->
-          <div class="inst-name">講師姓名</div>
-          <div class="inst-role">Fenny Studio｜毛根手作花藝講師</div>
-          <ul>
-            <li>專注毛根手作花藝設計與教學</li>
-            <li>擅長把細膩花型拆解成簡單步驟，零基礎也能完成</li>
-            <li>帶領企業團體、親子與社群手作活動經驗豐富</li>
-            <li>理念：用雙手做一朵不凋謝的花，把溫度帶回家</li>
-          </ul>
-        </div>
-      </div>
+      <!-- ★替換：講師姓名／頭銜 -->
+      <div class="inst-name">講師姓名</div>
+      <div class="inst-role">Fenny Studio｜毛根手作花藝講師</div>
+      <ul class="exp-list">
+        <!-- ★替換：講師經歷（一行一項） -->
+        <li>專注毛根手作花藝設計與教學</li>
+        <li>擅長把細膩花型拆解成簡單步驟，零基礎也能完成</li>
+        <li>帶領企業團體、親子與社群手作活動經驗豐富</li>
+        <li>理念：用雙手做一朵不凋謝的花，把溫度帶回家</li>
+      </ul>
     </div>
     <nav class="pager"><a class="pg prev" href="#s2">‹ 上一頁</a><a class="pg next" href="#s4">下一頁 ›</a></nav>
   </section>
@@ -312,15 +309,14 @@
   <!-- ===== P8 結尾 ===== -->
   <section class="slide" id="s8">
     <div class="stage closing-stage">
-      <!-- ★替換：品牌 logo（等檔案到了換成 <img class="brand-logo" src="{{LOGO}}" alt="FENNY STUDIO">） -->
-      <div class="brand-logo ph">LOGO<br>待上傳</div>
+      <img class="brand-logo" src="assets/logo-round.png" alt="FENNY STUDIO">
       <div class="final-title">用雙手，做一件溫暖的事</div>
       <div class="final-msg">想預約課程、訂製作品，或想多認識芬妮手作，歡迎掃碼追蹤・聯絡我們 🤍</div>
       <div class="qr-row">
-        <!-- ★替換：IG QR（待上傳）→ <img class="qr-img" src="assets/qr-ig.png" alt="Instagram QR"> -->
-        <div class="qr-card"><img class="qr-img" src="assets/qr-ig.png" alt="Instagram QR"><span class="qr-name">📷 Instagram</span><span class="qr-sub">@fenny.studio</span></div>
-        <!-- ★替換：LINE QR（待上傳）→ <img class="qr-img" src="{{QR_LINE}}" alt="LINE QR"> -->
-        <div class="qr-card"><div class="qr-img ph">LINE QR<br>待上傳</div><span class="qr-name">💬 LINE</span><span class="qr-sub">加好友</span></div>
+        <!-- ★替換：IG QR（待上傳）→ <img class="qr-img" src="assets/qr-ig.jpeg" alt="Instagram QR"> -->
+        <div class="qr-card"><img class="qr-img" src="assets/qr-ig.jpeg" alt="Instagram QR"><span class="qr-name">📷 Instagram</span><span class="qr-sub">@fenny.studio</span></div>
+        <!-- ★替換：LINE QR（待上傳）→ <img class="qr-img" src="assets/qr-line.jpeg" alt="LINE QR"> -->
+        <div class="qr-card"><img class="qr-img" src="assets/qr-line.jpeg" alt="LINE QR"><span class="qr-name">💬 LINE</span><span class="qr-sub">加好友</span></div>
         <div class="qr-card"><img class="qr-img" src="assets/qr-store.png" alt="線上商店 QR"><span class="qr-name">🛒 線上商店</span><span class="qr-sub">flowers.fenny-studio.com</span></div>
       </div>
     </div>
